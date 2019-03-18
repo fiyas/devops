@@ -6,7 +6,7 @@ pipeline {
   stage('build') {
    steps {
     sshagent(credentials: ['ssh']) {
-     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user uname -a'
+     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 172.31.46.182 uname -a'
     }
    }
   }

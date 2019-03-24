@@ -10,11 +10,11 @@ pipeline {
     } 
    }
   }
-  stage('path') {
+  stage('aws') {
    steps {
     sshagent(credentials: ['ssh']) {
     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'JenkinsAWSKeys']]) {
-    sh 'ssh -p 22 -o StrictHostKeyChecking=no aws s3api list-buckets --query "Buckets[].Name"'
+    sh 'aws s3api list-buckets --query "Buckets[].Name"'
 }   
 }
  }
